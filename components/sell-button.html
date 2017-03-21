@@ -27,4 +27,22 @@
     </div>
 </template>
 
+<script>
+    class SellButton extends HTMLElement {
+        constructor() {
+            super();
+            this.importDocument = document.currentScript.ownerDocument;
+        }
+
+        connectedCallback () {
+            let shadowRoot = this.attachShadow({ mode: 'open' });
+            const template = this.importDocument.querySelector('#sellbtn');
+            const instance = template.content.cloneNode(true);
+            ShadowRoot.appendChild(instance);
+        }
+    }
+
+    window.customElements.defne('sell-button', SellButton);
+</script>
+
 </html>
